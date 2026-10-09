@@ -1,0 +1,17 @@
+{
+    "name": "petra",
+    "private": true,
+    "description": "Petra – tests des modules JavaScript (node:test) et guide utilisateur (Playwright)",
+    "author": "BELEJ-CONSULTING",
+    "scripts": {
+        "test": "node --test \"tests/js/*.test.js\"",
+        "screenshots": "node bin/screenshots.mjs",
+        "guide": "node bin/build-guide.mjs"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "devDependencies": {
+        "playwright": "^1.63.0"
+    }
+}

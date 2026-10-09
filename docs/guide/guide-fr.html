@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="BELEJ-CONSULTING">
+<title>Petra — Guide utilisateur — BELEJ-CONSULTING</title>
+<style>
+  @font-face { font-family: Plex; src: url(../../public/assets/fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2'); font-weight: 400; }
+  @font-face { font-family: Plex; src: url(../../public/assets/fonts/ibm-plex-sans-latin-500-normal.woff2) format('woff2'); font-weight: 500; }
+  @font-face { font-family: Plex; src: url(../../public/assets/fonts/ibm-plex-sans-latin-600-normal.woff2) format('woff2'); font-weight: 600 700; }
+  :root {
+    --navy: #1F4E79; --navy-dark: #163A5C; --accent: #E0662B; --soft: #E8EEF4;
+    --text: #1B2430; --muted: #5B6573; --border: #D9DEE5; --bg: #F5F6F8;
+    --ok: #1E7F4F; --ok-bg: #E6F4EC; --warn: #9A5B00; --warn-bg: #FDF1DD;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 10.5pt; }
+  body { margin: 0; font-family: Plex, "Segoe UI", Arial, sans-serif; color: var(--text); background: #fff; line-height: 1.55; }
+  main { max-width: 820px; margin: 0 auto; padding: 0 40px 60px; }
+  h1, h2, h3, h4 { color: var(--navy-dark); line-height: 1.25; font-weight: 600; }
+  h2.part { font-size: 2rem; margin: 0 0 .3em; padding-top: 12px; }
+  .part-head { break-before: page; padding: 28px 0 18px; margin-bottom: 20px; border-bottom: 3px solid var(--navy); }
+  .part-head .kicker { color: var(--accent); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
+  .part-head p { color: var(--muted); margin: .2em 0 0; }
+  h3 { font-size: 1.35rem; margin: 1.8em 0 .5em; padding-bottom: .25em; border-bottom: 1px solid var(--border); break-after: avoid; }
+  h4 { font-size: 1.05rem; margin: 1.3em 0 .4em; break-after: avoid; }
+  p { margin: .5em 0; }
+  a { color: var(--navy); }
+  strong { font-weight: 600; }
+  kbd { font-family: inherit; font-size: .9em; font-weight: 600; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 0 6px; white-space: nowrap; }
+
+  /* Page de garde */
+  .cover { height: 100vh; min-height: 1000px; display: flex; flex-direction: column; justify-content: space-between; padding: 70px 70px 60px;
+    background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 60%, #2A6399 100%); color: #fff; break-after: page; }
+  .cover .brand { font-size: 1.1rem; font-weight: 600; letter-spacing: .04em; opacity: .9; }
+  .cover h1 { color: #fff; font-size: 4.4rem; margin: 0; line-height: 1.05; }
+  .cover .title2 { font-size: 2.2rem; font-weight: 500; margin: .2em 0 0; }
+  .cover .title3 { font-size: 1.4rem; font-weight: 600; letter-spacing: .08em; margin: .6em 0 0; }
+  .cover .sub { font-size: 1.15rem; opacity: .9; max-width: 30em; }
+  .cover .bar { width: 90px; height: 5px; background: var(--accent); margin: 26px 0; border-radius: 3px; }
+  .cover .roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+  .cover .roles span { border: 1px solid rgba(255,255,255,.4); border-radius: 99px; padding: 3px 14px; font-size: .85rem; }
+  .cover .meta { display: flex; justify-content: space-between; font-size: .85rem; opacity: .85; border-top: 1px solid rgba(255,255,255,.25); padding-top: 18px; }
+
+  /* Sommaire */
+  .toc { break-after: page; padding-top: 30px; }
+  .toc h2 { font-size: 1.8rem; border-bottom: 3px solid var(--navy); padding-bottom: 10px; }
+  .toc ol { list-style: none; padding: 0; margin: 0; }
+  .toc > ol > li { margin: 14px 0 4px; font-weight: 600; color: var(--navy-dark); }
+  .toc ol ol { margin: 4px 0 0 18px; }
+  .toc ol ol li { font-weight: 400; margin: 2px 0; }
+  .toc a { text-decoration: none; color: inherit; }
+
+  /* Encadrés, étapes, tableaux, figures */
+  .note { border-left: 4px solid var(--navy); background: var(--soft); border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 12px 0; break-inside: avoid; }
+  .note b:first-child { display: block; color: var(--navy-dark); margin-bottom: 2px; }
+  .note.tip { border-color: var(--ok); background: var(--ok-bg); } .note.tip b:first-child { color: var(--ok); }
+  .note.warn { border-color: var(--accent); background: var(--warn-bg); } .note.warn b:first-child { color: var(--warn); }
+  ol.steps { counter-reset: step; list-style: none; padding: 0; margin: 10px 0; }
+  ol.steps > li { counter-increment: step; position: relative; padding: 2px 0 6px 38px; break-inside: avoid; }
+  ol.steps > li::before { content: counter(step); position: absolute; left: 0; top: 2px; width: 25px; height: 25px; border-radius: 50%; background: var(--navy); color: #fff;
+    font-weight: 600; font-size: .85rem; display: grid; place-items: center; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .93rem; break-inside: avoid; }
+  th { text-align: left; background: var(--navy); color: #fff; font-weight: 600; padding: 6px 10px; }
+  td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg); }
+  td.yes { color: var(--ok); font-weight: 600; text-align: center; } td.no { color: var(--muted); text-align: center; } th.c { text-align: center; }
+  figure { margin: 16px 0 20px; break-inside: avoid; text-align: center; }
+  figure img { max-width: 100%; max-height: 190mm; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 2px 8px rgba(16,24,40,.10); }
+  figure.phone img { max-height: 150mm; max-width: 62%; }
+  .phones { display: flex; gap: 18px; justify-content: center; align-items: flex-start; break-inside: avoid; }
+  .phones figure { flex: 1; margin-top: 10px; } .phones figure.phone img { max-width: 100%; max-height: 135mm; }
+  figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; }
+  figcaption b { color: var(--navy-dark); }
+  dl.gloss { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; }
+  dl.gloss dt { font-weight: 600; color: var(--navy-dark); } dl.gloss dd { margin: 0; }
+  .credit { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
+
+  @page { size: A4; margin: 16mm 14mm 18mm; }
+  @page :first { margin: 0; }
+  @media print {
+    main { max-width: none; padding: 0; }
+    .cover { height: 297mm; min-height: 0; }
+    a { text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="brand"><img src="../../public/assets/img/logo.svg" alt="" style="width:60px;height:60px;vertical-align:middle;margin-right:14px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.25)">BELEJ-CONSULTING</div>
+  <div>
+    <h1>Petra</h1>
+    <p class="title2">Guide utilisateur</p>
+    <p class="title3">BELEJ-CONSULTING</p>
+    <div class="bar"></div>
+    <p class="sub">Gestion et contrôle de stations-service : du carburant reçu au carburant stocké, vendu et encaissé.</p>
+    <div class="roles"><span>Propriétaire</span><span>Gérant</span><span>Pompiste</span></div>
+  </div>
+  <div class="meta"><span>Petra — développé par <strong>BELEJ-CONSULTING</strong></span><span>Édition de <span data-edition></span></span></div>
+</section>
+
+<main>
+
+<nav class="toc">
+  <h2>Sommaire</h2>
+  <ol>
+    <li><a href="#p0">Pour commencer</a>
+      <ol><li><a href="#s01">Ce que fait Petra</a></li><li><a href="#s02">Se connecter</a></li><li><a href="#s03">Les trois rôles</a></li><li><a href="#s04">Les règles à connaître</a></li></ol></li>
+    <li><a href="#p1">Partie 1 — Propriétaire</a>
+      <ol><li><a href="#s11">Le tableau de bord consolidé</a></li><li><a href="#s12">Les stations et leurs réglages</a></li><li><a href="#s13">Les utilisateurs et les rôles</a></li><li><a href="#s14">Les prix et le taux USD/CDF</a></li><li><a href="#s15">Les rapports</a></li><li><a href="#s16">Les alertes et le journal d'audit</a></li></ol></li>
+    <li><a href="#p2">Partie 2 — Gérant</a>
+      <ol><li><a href="#s21">Le tableau de bord de la station</a></li><li><a href="#s22">Ouvrir un poste</a></li><li><a href="#s23">Recevoir la caisse et valider le poste</a></li><li><a href="#s24">Le stock des cuves</a></li><li><a href="#s25">Les livraisons</a></li><li><a href="#s26">Traiter les alertes</a></li><li><a href="#s27">Les rapports et leurs exports</a></li></ol></li>
+    <li><a href="#p3">Partie 3 — Pompiste</a>
+      <ol><li><a href="#s31">Retrouver son poste</a></li><li><a href="#s32">Déclarer une sortie non vendue</a></li><li><a href="#s33">Clôturer son poste</a></li></ol></li>
+    <li><a href="#p4">Annexes</a>
+      <ol><li><a href="#s41">Les alertes</a></li><li><a href="#s42">Lexique</a></li></ol></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ Pour commencer -->
+<div class="part-head" id="p0"><div class="kicker">Tous les utilisateurs</div><h2 class="part">Pour commencer</h2><p>Ce qu'il faut savoir avant d'utiliser Petra, quel que soit votre rôle.</p></div>
+
+<h3 id="s01">Ce que fait Petra</h3>
+<p>Petra suit le carburant d'une station-service d'un bout à l'autre : <strong>reçu</strong> (livraisons), <strong>stocké</strong> (cuves et jaugeages), <strong>vendu</strong> (index des pistolets) et <strong>encaissé</strong> (caisse remise par le pompiste). À chaque étape, Petra compare ce qui est attendu et ce qui est constaté. Tout écart est rattaché à une station, à un poste et à une personne.</p>
+<p>Chaque station travaille sur son propre serveur, <strong>même sans Internet</strong>. Quand la connexion est là, la station envoie ses opérations au serveur central, où le propriétaire voit toutes ses stations.</p>
+
+<h3 id="s02">Se connecter</h3>
+<ol class="steps">
+  <li>Ouvrez l'adresse de Petra donnée par votre responsable (à la station : l'adresse du serveur de la station).</li>
+  <li>Saisissez votre <strong>identifiant</strong> (ou votre adresse e-mail) et votre <strong>mot de passe</strong>.</li>
+  <li>Appuyez sur <kbd>Se connecter</kbd>.</li>
+</ol>
+<figure><img src="images/01-login.png" alt="Écran de connexion"><figcaption><b>Figure 1.</b> Écran de connexion.</figcaption></figure>
+<div class="note warn"><b>Sécurité</b>Après <strong>5 tentatives</strong> erronées, le compte est verrouillé <strong>15 minutes</strong>. Ne prêtez jamais votre mot de passe : chaque opération est enregistrée à votre nom. Pour vous déconnecter, utilisez l'icône de sortie en haut à droite.</div>
+
+<h4>Se repérer dans l'écran</h4>
+<p>Le <strong>menu</strong> est à gauche. Il range les écrans en trois groupes — <strong>Exploitation</strong> (postes, stock, livraisons), <strong>Contrôle</strong> (alertes, rapports, journal d'audit) et <strong>Paramétrage</strong> (prix, stations, utilisateurs) — et n'affiche que ceux auxquels vous avez droit. Une pastille rouge indique ce qui vous attend : alertes ouvertes, postes à valider, synchronisation en attente. Votre nom, votre rôle et la déconnexion sont au pied du menu. La flèche en haut du menu le réduit en icônes.</p>
+<p>L'<strong>en-tête</strong> montre l'état de la synchronisation avec le central, la cloche des <strong>alertes ouvertes</strong> et la <strong>station</strong> sur laquelle vous travaillez. Sur téléphone, le menu s'ouvre par l'icône à trois traits ; le pompiste dispose à la place d'une barre en bas de l'écran (Accueil, Mes postes, Prix).</p>
+<table>
+  <tr><th>Indication dans l'en-tête</th><th>Signification</th></tr>
+  <tr><td><strong>Synchronisé</strong></td><td>Tout ce qui a été saisi est arrivé au serveur central.</td></tr>
+  <tr><td><strong>En attente (n)</strong></td><td>n opérations seront envoyées à la prochaine synchronisation (toutes les 5 minutes).</td></tr>
+  <tr><td><strong>Hors ligne</strong></td><td>Le central est injoignable. Continuez à travailler normalement : rien n'est perdu, tout partira au retour de la connexion.</td></tr>
+</table>
+
+<h3 id="s03">Les trois rôles</h3>
+<table>
+  <tr><th>Ce que vous pouvez faire</th><th class="c">Propriétaire</th><th class="c">Gérant</th><th class="c">Pompiste</th></tr>
+  <tr><td>Voir toutes les stations (vue consolidée)</td><td class="yes">Oui</td><td class="no">—</td><td class="no">—</td></tr>
+  <tr><td>Créer les stations, les utilisateurs ; régler les seuils</td><td class="yes">Oui</td><td class="no">—</td><td class="no">—</td></tr>
+  <tr><td>Publier un prix ou un taux USD/CDF</td><td class="yes">Oui</td><td class="no">—</td><td class="no">—</td></tr>
+  <tr><td>Consulter le journal d'audit</td><td class="yes">Oui</td><td class="no">—</td><td class="no">—</td></tr>
+  <tr><td>Tableau de bord et rapports de sa station</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="no">—</td></tr>
+  <tr><td>Ouvrir un poste, recevoir la caisse, valider le poste</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="no">—</td></tr>
+  <tr><td>Jauger une cuve, recevoir une livraison, traiter une alerte</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="no">—</td></tr>
+  <tr><td>Voir son poste, déclarer une sortie non vendue, saisir ses index finaux</td><td class="yes">Oui</td><td class="yes">Oui</td><td class="yes">Oui</td></tr>
+</table>
+<p>Ces droits sont ceux fournis à l'installation. Le propriétaire peut les ajuster dans l'écran <kbd>Rôles et permissions</kbd>.</p>
+<div class="note"><b>Chacun sa station</b>Un gérant et un pompiste ne voient que la ou les stations qui leur sont attribuées. Toute tentative d'accès à une autre station est refusée, inscrite au journal d'audit et signalée par une alerte.</div>
+
+<h3 id="s04">Les règles à connaître</h3>
+<table>
+  <tr><th>Règle</th><th>Ce que cela change pour vous</th></tr>
+  <tr><td><strong>Rien ne s'efface</strong></td><td>Une opération validée ne se modifie pas et ne se supprime pas. Un poste validé est définitif ; un écart se <em>justifie</em>, il ne se corrige pas en réécrivant les chiffres. Toute tentative est refusée et journalisée.</td></tr>
+  <tr><td><strong>Les ventes viennent des index</strong></td><td>Litres vendus = index final − index d'ouverture − sorties non vendues. Personne ne saisit « les litres vendus ».</td></tr>
+  <tr><td><strong>Prix et taux datés</strong></td><td>Chaque prix et chaque taux a une date d'effet. Une opération garde le prix et le taux en vigueur à son heure, même s'ils changent ensuite.</td></tr>
+  <tr><td><strong>Les écarts sont en francs</strong></td><td>Les dollars remis sont convertis en francs congolais au taux de la tranche de poste où ils ont été encaissés.</td></tr>
+  <tr><td><strong>Un seul poste ouvert par station</strong></td><td>Le poste suivant ne s'ouvre qu'après la clôture du précédent, et reprend ses index.</td></tr>
+</table>
+
+<!-- ============================================================ Propriétaire -->
+<div class="part-head" id="p1"><div class="kicker">Partie 1</div><h2 class="part">Propriétaire</h2><p>Voir toutes ses stations, décider des prix et du taux, contrôler les écarts.</p></div>
+
+<h3 id="s11">Le tableau de bord consolidé</h3>
+<p>À la connexion, l'<kbd>Accueil</kbd> répond d'abord à trois questions : est-ce que tout va bien, où est le problème, que faire maintenant. En haut, choisissez la <strong>période</strong> (aujourd'hui, hier, 7 jours, ce mois, ou une période personnalisée) et la <strong>station</strong>.</p>
+<figure><img src="images/10-owner-dashboard.png" alt="Tableau de bord consolidé"><figcaption><b>Figure 2.</b> Tableau de bord consolidé : état, chiffres clés, chaîne de contrôle, stations, graphiques et cuves.</figcaption></figure>
+<ul>
+  <li><strong>L'état</strong> : « Tout est en ordre », ou le nombre de points à traiter, avec une carte par action — alertes critiques, postes à valider, cuves en stock bas. Un clic y mène.</li>
+  <li><strong>Quatre chiffres clés</strong> : chiffre d'affaires, litres vendus, argent encaissé, écart de caisse. Chacun montre son évolution par rapport à la période précédente de même durée et sa courbe sur sept jours.</li>
+  <li><strong>La chaîne de contrôle</strong> : reçu, stocké, vendu, encaissé, avec l'écart entre deux étapes ; il passe en rouge quand il manque quelque chose.</li>
+  <li><strong>Vos stations</strong> : une carte par station, avec sa recette, son écart, ses alertes et sa <strong>dernière synchronisation</strong>. Un clic ouvre son tableau de bord ; <kbd>Comparatif des stations</kbd> ouvre le tableau complet.</li>
+  <li><strong>Deux graphiques</strong> (ventes et encaissements par jour, ventes par produit) et <strong>les cuves</strong> en miniature.</li>
+</ul>
+<p>Chaque bloc s'ouvre en détail : un clic sur un chiffre, une étape de la chaîne, une cuve, ou les boutons <kbd>Derniers ravitaillements</kbd> et <kbd>Écarts par pompiste</kbd>, affiche un tableau compact dans une fenêtre.</p>
+<div class="note tip"><b>À surveiller chaque matin</b>La dernière synchronisation de chaque station. Une station muette depuis plus de 24 heures lève une alerte : PC éteint, Internet coupé ou tâche de synchronisation arrêtée.</div>
+
+<h3 id="s12">Les stations et leurs réglages</h3>
+<p>L'écran <kbd>Stations</kbd> liste vos stations. La fiche d'une station regroupe son installation et ses réglages.</p>
+<figure><img src="images/12-owner-station.png" alt="Fiche d'une station"><figcaption><b>Figure 3.</b> Fiche d'une station : horaires des postes, seuils, produits, cuves et pistolets.</figcaption></figure>
+<table>
+  <tr><th>Rubrique</th><th>Contenu</th></tr>
+  <tr><td><strong>Horaires des postes</strong></td><td>Au choix : <strong>horaires fixes</strong> — des plages nommées (par exemple Matin 06 h–12 h, Après-midi 12 h–18 h) proposées à l'ouverture d'un poste — ou <strong>horaires libres</strong> : un poste s'ouvre et se clôture quand on veut ; Petra enregistre son heure d'ouverture et son heure de fermeture.</td></tr>
+  <tr><td><strong>Seuils</strong></td><td>Tolérance de stock (en % et en litres), stock bas, tolérances de manquant et d'excédent de caisse, écart de livraison toléré, durée maximale d'un poste ouvert, délai maximal sans synchronisation. Au-delà d'un seuil, Petra lève une alerte.</td></tr>
+  <tr><td><strong>Produits, cuves, pistolets</strong></td><td>Chaque cuve contient un produit et possède un <strong>barème de jaugeage</strong> (hauteur en cm → volume en litres), saisi point par point ou importé d'un fichier CSV. Chaque pistolet est relié à une cuve.</td></tr>
+  <tr><td><strong>Distributeurs</strong></td><td>Un distributeur (la pompe) porte un <strong>code</strong> (D1, D2…) et regroupe ses pistolets, chacun avec son propre code. Chaque pistolet sert le produit de sa cuve : un distributeur est donc <strong>mono-produit</strong> ou <strong>multi-produits</strong>. Créez d'abord le distributeur, puis ses pistolets. Une fois qu'un index a été relevé sur un pistolet, il ne change plus de distributeur ni de produit : désactivez-le et créez-en un autre.</td></tr>
+</table>
+<div class="note warn"><b>Le barème d'abord</b>Sans barème, une cuve ne peut pas être jaugée : ni stock, ni contrôle des livraisons. Saisissez-le dès l'installation de la station.</div>
+
+<h3 id="s13">Les utilisateurs et les rôles</h3>
+<p>Dans <kbd>Utilisateurs</kbd>, créez un compte par personne, choisissez son rôle et attribuez-lui sa ou ses stations. Un compte désactivé ne peut plus se connecter ; son historique reste intact.</p>
+<figure><img src="images/13-owner-users.png" alt="Liste des utilisateurs"><figcaption><b>Figure 4.</b> Utilisateurs, avec leur rôle et leurs stations.</figcaption></figure>
+<p>L'écran <kbd>Rôles et permissions</kbd> montre, pour chaque rôle, ce qu'il autorise. Modifiez-le avec prudence : chaque changement est inscrit au journal d'audit.</p>
+<div class="note"><b>Station reliée au central</b>Quand une station est reliée au serveur central, les comptes, les rôles et la fiche de la station se gèrent <strong>au central</strong> et descendent vers la station à la synchronisation suivante.</div>
+
+<h3 id="s14">Les prix et le taux USD/CDF</h3>
+<p>L'écran <kbd>Prix et taux</kbd> affiche, pour la station choisie dans l'en-tête, le prix en vigueur de chaque produit, le taux du dollar et l'historique de toutes les versions.</p>
+<figure><img src="images/15-owner-prices.png" alt="Prix et taux"><figcaption><b>Figure 5.</b> Prix en vigueur, taux USD/CDF et historique des versions.</figcaption></figure>
+<h4>Publier un nouveau prix ou un nouveau taux</h4>
+<ol class="steps">
+  <li>Choisissez la station dans l'en-tête, puis ouvrez <kbd>Prix et taux</kbd>.</li>
+  <li>Appuyez sur le bouton de nouveau prix du produit, ou de nouveau taux.</li>
+  <li>Saisissez la nouvelle valeur et, si vous le souhaitez, un motif.</li>
+  <li><strong>Si un poste est ouvert</strong>, Petra demande l'index de chaque pistolet à cet instant : faites-les relever et saisissez-les.</li>
+  <li>Appuyez sur <kbd>Publier</kbd>. La nouvelle valeur prend effet immédiatement.</li>
+</ol>
+<figure><img src="images/16-owner-rate.png" alt="Nouveau taux avec index intermédiaires"><figcaption><b>Figure 6.</b> Nouveau taux pendant un poste ouvert : les index intermédiaires sont obligatoires.</figcaption></figure>
+<div class="note"><b>Pourquoi ces index ?</b>Ils coupent le poste en deux <strong>tranches</strong> : les litres vendus avant sont comptés à l'ancienne valeur, les litres vendus après à la nouvelle. Sans ce relevé, il serait impossible de savoir combien le pompiste doit. L'ancienne version est conservée : rien de ce qui est déjà saisi n'est recalculé.</div>
+
+<h4>Clôturer totalement un poste</h4>
+<p>Dans l'écran <kbd>Postes</kbd>, le propriétaire dispose d'un bouton <kbd>Clôturer totalement</kbd> sur chaque poste non validé. Il réunit en une fenêtre les index finaux (si le poste est encore ouvert) et l'argent reçu en francs et en dollars, puis valide le poste — sans attendre une seconde personne.</p>
+<div class="note warn"><b>À réserver aux cas où personne d'autre ne peut valider</b>En temps normal, un poste est validé par une autre personne que celle qui l'a tenu ou clôturé. La clôture totale lève cette règle pour le propriétaire seulement ; l'écart est calculé de la même façon et le journal d'audit porte la mention « validé seul ».</div>
+
+<h3 id="s15">Les rapports</h3>
+<p>L'écran <kbd>Rapports</kbd> propose trois rapports, pour une station ou pour toutes : <strong>journalier</strong>, <strong>mensuel</strong> et <strong>par poste</strong>. Chacun s'exporte en Excel, en PDF, ou s'imprime ; il porte la station, la période, la date de génération et votre nom.</p>
+<figure><img src="images/17-owner-report-month.png" alt="Rapport mensuel consolidé"><figcaption><b>Figure 7.</b> Rapport mensuel consolidé : synthèse par jour, par produit, par station et par pompiste.</figcaption></figure>
+<p>Le détail du rapport journalier et des exports est décrit dans la partie du gérant (<a href="#s27">Les rapports et leurs exports</a>).</p>
+
+<h3 id="s16">Les alertes et le journal d'audit</h3>
+<p>L'écran <kbd>Alertes</kbd> réunit les alertes de toutes vos stations, avec le nombre d'alertes ouvertes par station. La signification de chaque alerte est donnée en <a href="#s41">annexe</a>.</p>
+<figure><img src="images/18-owner-alerts.png" alt="Centre d'alertes consolidé"><figcaption><b>Figure 8.</b> Centre d'alertes, toutes stations.</figcaption></figure>
+<p>Le <kbd>Journal d'audit</kbd> garde la trace de chaque action : qui, quoi, quand, sur quelle station, avec les valeurs avant et après. Il se filtre par objet, par action et par période. Personne ne peut le modifier ni l'effacer, pas même le propriétaire.</p>
+<figure><img src="images/19-owner-audit.png" alt="Journal d'audit"><figcaption><b>Figure 9.</b> Journal d'audit.</figcaption></figure>
+<div class="note tip"><b>Deux actions à rechercher</b>« Accès refusé » (quelqu'un a tenté d'ouvrir un écran ou une station qui ne lui est pas attribué) et « Modification refusée » (quelqu'un a tenté d'écrire dans un poste clôturé ou validé).</div>
+
+<!-- ============================================================ Gérant -->
+<div class="part-head" id="p2"><div class="kicker">Partie 2</div><h2 class="part">Gérant</h2><p>Tenir la station au quotidien : postes, caisse, stock, livraisons, alertes.</p></div>
+
+<h3 id="s21">Le tableau de bord de la station</h3>
+<p>L'<kbd>Accueil</kbd> résume votre station sur la période choisie : d'abord ce qui demande une action (poste à valider, cuve en stock bas, alerte critique), puis quatre chiffres clés avec leur évolution, la chaîne de contrôle, deux graphiques et vos cuves. Le taux du dollar en vigueur est rappelé sous le titre. Un clic sur un chiffre, une étape ou une cuve ouvre son détail en tableau dans une fenêtre.</p>
+<figure><img src="images/20-manager-dashboard.png" alt="Tableau de bord de la station"><figcaption><b>Figure 10.</b> Tableau de bord de la station.</figcaption></figure>
+<div class="note"><b>Quand une vente apparaît-elle ?</b>Une vente est comptée dans la journée de son poste, dès que l'index final est saisi. Un poste encore ouvert n'apparaît donc pas dans le chiffre d'affaires.</div>
+
+<h3 id="s22">Ouvrir un poste</h3>
+<ol class="steps">
+  <li>Appuyez sur <kbd>Ouvrir un poste</kbd>, en haut du menu.</li>
+  <li>Choisissez le <strong>pompiste</strong> et, en horaires fixes, le libellé du poste (Matin, Après-midi…).</li>
+  <li>Cochez le ou les <strong>distributeurs</strong> confiés à ce pompiste. Les autres restent libres : un second pompiste peut tenir son propre poste en même temps, avec ses index et sa caisse.</li>
+  <li>Vérifiez l'<strong>index d'ouverture</strong> de chaque pistolet. Petra reprend l'index final du poste précédent ; au tout premier poste, lisez-le au compteur.</li>
+  <li>Enregistrez. Le pompiste voit aussitôt son poste.</li>
+</ol>
+<figure><img src="images/22-manager-shift-open.png" alt="Ouverture d'un poste"><figcaption><b>Figure 11.</b> Ouverture d'un poste : pompiste et index d'ouverture.</figcaption></figure>
+<p>Petra refuse l'ouverture, en expliquant pourquoi, si un poste est déjà ouvert sur la station, si un produit n'a pas de prix ou si aucun taux USD/CDF n'est publié.</p>
+<figure><img src="images/21-manager-shifts.png" alt="Postes de la journée"><figcaption><b>Figure 12.</b> Les postes de la journée : une carte par créneau ou par poste, avec ses distributeurs, son état et l'action suivante.</figcaption></figure>
+<p>L'écran <kbd>Postes</kbd> montre la journée : une carte par créneau (Matin, Après-midi…) — ou par poste en horaires libres et pour chaque poste tenu en parallèle —, avec le pompiste, ses distributeurs (D1, D2…), les litres vendus, le montant attendu et l'écart. Le bouton de la carte est toujours l'étape suivante : <kbd>Ouvrir</kbd>, <kbd>Clôturer</kbd>, <kbd>Recevoir la caisse</kbd>, puis <kbd>Valider</kbd>. Il ouvre une fenêtre de saisie ; avant l'enregistrement, une étape de vérification récapitule ce que vous avez saisi. La carte se met à jour aussitôt, sans recharger la page. Un clic sur la carte ouvre le détail du poste (ventes, caisse, événements) et <kbd>Voir la fiche</kbd> mène à la fiche complète. <kbd>Historique de ce poste</kbd> liste les derniers postes du même créneau avec la courbe de leurs écarts, et <kbd>Historique général</kbd>, en haut à droite, ouvre la liste complète avec ses filtres et ses exports. En haut de la page, choisissez la journée : <kbd>Aujourd&#39;hui</kbd>, <kbd>Hier</kbd>, le calendrier, ou la semaine jour par jour. Le point sous chaque jour indique son état : vert sans manquant, rouge avec manquant, orange s&#39;il reste un poste à solder.</p>
+
+<h3 id="s23">Recevoir la caisse et valider le poste</h3>
+<p>Quand le pompiste a saisi ses index finaux, le poste passe « À valider ». Sa fiche montre, par tranche et par pistolet, les index, les litres vendus et la valeur des ventes.</p>
+<figure><img src="images/23-manager-shift.png" alt="Fiche d'un poste"><figcaption><b>Figure 13.</b> Fiche d'un poste : deux tranches, car le taux a changé à 14 h.</figcaption></figure>
+<h4>La caisse du poste</h4>
+<ol class="steps">
+  <li>Depuis la fiche du poste, ouvrez <kbd>Caisse du poste</kbd>.</li>
+  <li>Enregistrez l'<strong>argent remis</strong> : un montant en francs, et un montant en dollars s'il y en a. Pour les dollars, vous pouvez indiquer la tranche où ils ont été encaissés ; sinon Petra applique la règle réglée pour la station.</li>
+  <li>Ajoutez, s'il y a lieu, les <strong>ventes à crédit</strong> (client, bon, litres) et les <strong>dépenses de caisse</strong> : elles diminuent la caisse attendue.</li>
+  <li>Contrôlez l'écran : <em>caisse attendue</em>, <em>caisse remise</em>, et l'écart.</li>
+  <li>Revenez à la fiche du poste et appuyez sur <kbd>Valider</kbd>.</li>
+</ol>
+<figure><img src="images/24-manager-cash.png" alt="Caisse du poste"><figcaption><b>Figure 14.</b> Caisse du poste : attendu, remis en francs et en dollars, écart, détail par tranche.</figcaption></figure>
+<div class="note warn"><b>La validation est définitive</b>À la validation, l'écart est figé et rattaché au pompiste. Plus rien ne peut être ajouté ni modifié dans ce poste. Comptez l'argent devant le pompiste <strong>avant</strong> de valider.</div>
+<h4>Justifier un écart</h4>
+<p>Si l'écart dépasse la tolérance de la station, Petra lève une alerte (déficit ou excédent de caisse). Sur l'écran de la caisse, <kbd>Justifier l'écart</kbd> enregistre l'explication et le montant qu'elle couvre (billets refusés, erreur de rendu reconnue…). L'écart constaté reste au dossier ; la justification s'y ajoute.</p>
+
+<h3 id="s24">Le stock des cuves</h3>
+<p>L'écran <kbd>Stock des cuves</kbd> montre une carte par cuve : la cuve dessinée avec son niveau, son pourcentage de remplissage et le trait rouge du seuil de stock bas, puis un résumé — le produit, le <strong>stock théorique</strong> en litres et l'<strong>autonomie</strong> estimée au rythme de vente des sept derniers jours. En haut de la page : le stock total, l'autonomie la plus courte et le nombre de cuves en stock bas.</p>
+<p><kbd>Plus de détails</kbd> ouvre une fenêtre qui explique d'où vient le chiffre (dernier jaugeage + livraisons − litres débités + retours en cuve), donne le dernier écart et mène à l'<kbd>Historique de la cuve</kbd>. <kbd>Historique général</kbd>, en haut à droite, ouvre tous les jaugeages avec leurs exports.</p>
+<figure><img src="images/25-manager-stock.png" alt="Stock des cuves"><figcaption><b>Figure 15.</b> Une carte par cuve : niveau, stock et autonomie.</figcaption></figure>
+<h4>Enregistrer un jaugeage</h4>
+<ol class="steps">
+  <li>Plongez la jauge et lisez la <strong>hauteur en centimètres</strong> (et la hauteur d'eau, si vous la relevez).</li>
+  <li>Sur la carte de la cuve, appuyez sur <kbd>Jauger</kbd> : une fenêtre s'ouvre. Saisissez la hauteur et choisissez la nature du jaugeage (ouverture, clôture, contrôle).</li>
+  <li>Vérifiez le récapitulatif, puis enregistrez. Petra convertit la hauteur en litres avec le barème, la compare au stock théorique et affiche l'écart ; la carte se met à jour aussitôt.</li>
+</ol>
+<div class="note"><b>Écart de stock</b>Un écart supérieur à la tolérance de la station lève une alerte d'écart de stock. Sous le seuil de stock bas, une alerte de stock bas vous invite à commander.</div>
+
+<h3 id="s25">Les livraisons</h3>
+<ol class="steps">
+  <li><strong>Avant le dépotage</strong>, jaugez la cuve et notez la hauteur.</li>
+  <li>Ouvrez <kbd>Livraisons</kbd>, puis la nouvelle livraison.</li>
+  <li>Choisissez le <strong>fournisseur</strong> dans la liste et la cuve, puis saisissez le numéro du bon, le camion et le chauffeur ; la quantité <strong>commandée</strong>, la quantité <strong>annoncée</strong> par le bon et la quantité <strong>reçue</strong>.</li>
+  <li><strong>Après le dépotage</strong>, jaugez de nouveau et saisissez les deux hauteurs (avant et après).</li>
+  <li>Joignez, si possible, la photo du bon de livraison, puis enregistrez.</li>
+</ol>
+<figure><img src="images/27-manager-delivery-form.png" alt="Réception d'une livraison"><figcaption><b>Figure 16.</b> Réception d'une livraison.</figcaption></figure>
+<p>Le fournisseur se choisit dans le <strong>répertoire des fournisseurs</strong> de la station (menu <kbd>Fournisseurs</kbd>). Un nouveau fournisseur se présente : ouvrez <kbd>Fournisseurs</kbd>, puis <kbd>Nouveau fournisseur</kbd>, saisissez son nom, son contact et son téléphone ; il est aussitôt proposé à la réception. Un fournisseur avec lequel vous ne travaillez plus se <strong>désactive</strong> : il disparaît de la liste, ses livraisons passées restent.</p>
+<figure><img src="images/28b-manager-suppliers.png" alt="Répertoire des fournisseurs"><figcaption>Répertoire des fournisseurs : livraisons et volume reçu par fournisseur.</figcaption></figure>
+<p>Petra calcule deux écarts : entre l'annoncé et le reçu (ce que le fournisseur doit), et entre le reçu et la montée réelle de la cuve. Au-delà de la tolérance de la station, une alerte d'écart de livraison est levée à votre nom.</p>
+<figure><img src="images/28-manager-delivery.png" alt="Fiche d'une livraison"><figcaption><b>Figure 17.</b> Fiche d'une livraison : 12 000 L annoncés, 11 850 L reçus.</figcaption></figure>
+
+<h3 id="s26">Traiter les alertes</h3>
+<p>La cloche de l'en-tête indique le nombre d'alertes ouvertes. L'écran <kbd>Alertes</kbd> les liste, les plus graves d'abord.</p>
+<figure><img src="images/29-manager-alerts.png" alt="Alertes de la station"><figcaption><b>Figure 18.</b> Alertes de la station.</figcaption></figure>
+<ol class="steps">
+  <li>Ouvrez l'alerte pour lire son détail : poste, personne concernée, montant ou volume, seuil dépassé.</li>
+  <li>Marquez-la <strong>vue</strong> dès que vous en avez pris connaissance.</li>
+  <li>Une fois la cause comprise, marquez-la <strong>traitée</strong> en écrivant ce qui a été fait.</li>
+</ol>
+<figure><img src="images/30-manager-alert.png" alt="Détail d'une alerte"><figcaption><b>Figure 19.</b> Détail d'une alerte de déficit de caisse.</figcaption></figure>
+<div class="note"><b>Une alerte ne disparaît pas</b>Traitée, elle reste consultable avec votre note. Tant qu'elle n'est pas traitée, Petra ne la répète pas chaque jour : elle suffit.</div>
+
+<h3 id="s27">Les rapports et leurs exports</h3>
+<p>Dans <kbd>Rapports</kbd>, choisissez le rapport, la journée ou le mois, puis <kbd>Afficher</kbd>. Le <strong>rapport journalier</strong> répond à dix questions :</p>
+<table>
+  <tr><th>N°</th><th>Question</th><th>Section du rapport</th></tr>
+  <tr><td>1–2</td><td>Combien de litres d'Essence et de Mazout ont été vendus ?</td><td>Litres vendus par produit</td></tr>
+  <tr><td>3–5</td><td>Quel montant était attendu ? Combien a été remis en francs, en dollars ?</td><td>Montant attendu et remis, par poste</td></tr>
+  <tr><td>6</td><td>Quels taux ont été utilisés ?</td><td>Taux USD/CDF utilisés</td></tr>
+  <tr><td>7</td><td>Quel stock théorique reste-t-il ?</td><td>Stock théorique restant, par cuve</td></tr>
+  <tr><td>8</td><td>Quels ravitaillements ont été reçus ?</td><td>Ravitaillements</td></tr>
+  <tr><td>9</td><td>Quels écarts et anomalies ?</td><td>Écarts de caisse, de stock, de livraison, alertes</td></tr>
+  <tr><td>10</td><td>Qui est responsable de chaque opération ?</td><td>Journal des opérations de la journée</td></tr>
+</table>
+<figure><img src="images/31-manager-report-day.png" alt="Rapport journalier"><figcaption><b>Figure 20.</b> Rapport journalier.</figcaption></figure>
+<p>Les trois boutons en haut à droite produisent le même rapport, avec les mêmes chiffres, en <kbd>Excel</kbd>, en <kbd>PDF</kbd> ou sur papier (<kbd>Imprimer</kbd>).</p>
+<figure><img src="images/32-manager-report-export.png" alt="Boutons d'export"><figcaption><b>Figure 21.</b> Exports Excel et PDF, impression.</figcaption></figure>
+<p>Le <strong>rapport par poste</strong> détaille un poste : relevés par pistolet et par tranche, taux, remises, sorties non vendues, ventes à crédit, dépenses, anomalies et responsables. Choisissez la journée, puis le poste.</p>
+<figure><img src="images/33-manager-report-shift.png" alt="Rapport de poste"><figcaption><b>Figure 22.</b> Rapport de poste.</figcaption></figure>
+
+<!-- ============================================================ Pompiste -->
+<div class="part-head" id="p3"><div class="kicker">Partie 3</div><h2 class="part">Pompiste</h2><p>Votre poste, sur téléphone ou sur tablette : trois gestes à connaître.</p></div>
+
+<h3 id="s31">Retrouver son poste</h3>
+<p>Le gérant ouvre votre poste et note l'index de départ de chaque pistolet. Après connexion, appuyez sur <kbd>Mes postes</kbd>, dans la barre en bas de l'écran (ou sur <kbd>Voir mes postes</kbd>) : vous ne voyez que <strong>vos</strong> postes.</p>
+<div class="phones">
+  <figure class="phone"><img src="images/40-attendant-home.png" alt="Accueil du pompiste"><figcaption><b>Figure 23.</b> Accueil.</figcaption></figure>
+  <figure class="phone"><img src="images/42-attendant-shift.png" alt="Poste ouvert"><figcaption><b>Figure 24.</b> Votre poste ouvert.</figcaption></figure>
+</div>
+<p>Vérifiez que les <strong>index d'ouverture</strong> affichés sont bien ceux des compteurs. S'ils diffèrent, prévenez le gérant <strong>avant de servir</strong> : c'est sur ces index que vos ventes seront calculées.</p>
+
+<h3 id="s32">Déclarer une sortie non vendue</h3>
+<p>Tout litre qui sort du pistolet sans être vendu doit être déclaré, sinon il vous sera compté comme vendu : <strong>essai</strong> de pompe, <strong>étalonnage</strong>, <strong>usage interne</strong>, <strong>retour en cuve</strong>.</p>
+<ol class="steps">
+  <li>Sur votre poste, appuyez sur <kbd>Sortie non vendue</kbd>.</li>
+  <li>Choisissez le pistolet et la nature de la sortie.</li>
+  <li>Saisissez le volume en litres et le motif.</li>
+  <li>Appuyez sur <kbd>Enregistrer</kbd>.</li>
+</ol>
+<figure class="phone"><img src="images/43-attendant-output.png" alt="Sortie non vendue"><figcaption><b>Figure 25.</b> Déclaration d'une sortie non vendue.</figcaption></figure>
+<div class="note warn"><b>Pendant le poste, pas après</b>Une fois le poste clôturé, plus aucune sortie ne peut être ajoutée. Déclarez l'essai au moment où vous le faites.</div>
+
+<h3 id="s33">Clôturer son poste</h3>
+<ol class="steps">
+  <li>À la fin du poste, appuyez sur <kbd>Clôturer le poste</kbd>.</li>
+  <li>Lisez l'<strong>index final</strong> de chaque pistolet au compteur et saisissez-le.</li>
+  <li>Si un compteur est arrivé au bout et reparti de zéro, cochez « Le compteur est repassé par zéro » : le gérant le confirmera.</li>
+  <li>Appuyez sur <kbd>Clôturer le poste</kbd>, puis remettez votre caisse au gérant.</li>
+</ol>
+<figure class="phone"><img src="images/44-attendant-close.png" alt="Clôture du poste"><figcaption><b>Figure 26.</b> Saisie des index finaux.</figcaption></figure>
+<p>Petra calcule alors vos litres vendus et le montant attendu. Le gérant compte l'argent devant vous, l'enregistre et valide le poste. L'écart éventuel est à votre nom : assistez au comptage.</p>
+<div class="note"><b>Relisez avant de confirmer</b>Un index final plus petit que l'index d'ouverture est refusé. Après la clôture, les index ne se modifient plus ; toute tentative est refusée et signalée au gérant.</div>
+
+<!-- ============================================================ Annexes -->
+<div class="part-head" id="p4"><div class="kicker">Annexes</div><h2 class="part">Annexes</h2></div>
+
+<h3 id="s41">Les alertes</h3>
+<table>
+  <tr><th>Alerte</th><th>Quand est-elle levée ?</th><th>Rattachée à</th></tr>
+  <tr><td>Déficit ou excédent de caisse</td><td>À la validation d'un poste, si l'écart dépasse la tolérance de la station.</td><td>Station, poste, pompiste</td></tr>
+  <tr><td>Écart de stock</td><td>À un jaugeage, si le volume mesuré s'écarte du stock théorique au-delà de la tolérance.</td><td>Station, cuve, auteur du jaugeage</td></tr>
+  <tr><td>Stock bas</td><td>Quand le stock d'une cuve passe sous le seuil de la station (au jaugeage ou au contrôle quotidien).</td><td>Station, cuve</td></tr>
+  <tr><td>Écart de livraison</td><td>À la réception, si l'écart avec le bon ou avec la montée de la cuve dépasse la tolérance.</td><td>Station, livraison, réceptionnaire</td></tr>
+  <tr><td>Changement de prix ou de taux</td><td>À chaque publication (information).</td><td>Station, auteur</td></tr>
+  <tr><td>Passage à zéro d'un compteur</td><td>Quand un pompiste déclare qu'un compteur est reparti de zéro.</td><td>Station, poste</td></tr>
+  <tr><td>Poste non clôturé</td><td>Au contrôle quotidien, si un poste est ouvert depuis plus longtemps que la durée réglée (16 h par défaut).</td><td>Station, poste, pompiste</td></tr>
+  <tr><td>Station non synchronisée</td><td>Au contrôle quotidien, sans synchronisation réussie depuis le délai réglé (24 h par défaut).</td><td>Station</td></tr>
+  <tr><td>Conflit de synchronisation</td><td>Quand le central et la station ne s'accordent pas sur une ligne. Rien n'est écrasé.</td><td>Station</td></tr>
+  <tr><td>Accès refusé</td><td>Tentative d'ouvrir un écran ou une station non attribués.</td><td>Station, utilisateur</td></tr>
+  <tr><td>Modification refusée</td><td>Tentative d'écrire dans un poste clôturé ou validé.</td><td>Station, poste, utilisateur</td></tr>
+</table>
+
+<h3 id="s42">Lexique</h3>
+<dl class="gloss">
+  <dt>Poste</dt><dd>Période de travail d'un pompiste, de l'ouverture (index de départ) à la clôture (index finaux), puis à la validation par le gérant.</dd>
+  <dt>Tranche</dt><dd>Partie d'un poste à prix et taux constants. Un changement de prix ou de taux en cours de poste ouvre une nouvelle tranche.</dd>
+  <dt>Distributeur</dt><dd>La pompe : elle porte un code et regroupe un ou plusieurs pistolets, d'un seul produit ou de plusieurs.</dd>
+  <dt>Index</dt><dd>Valeur du compteur d'un pistolet, en litres.</dd>
+  <dt>Sortie non vendue</dt><dd>Carburant débité sans vente : essai, étalonnage, usage interne, retour en cuve.</dd>
+  <dt>Caisse attendue</dt><dd>Valeur des ventes, moins les ventes à crédit et les dépenses de caisse.</dd>
+  <dt>Écart de caisse</dt><dd>Caisse remise − caisse attendue, en francs congolais. Négatif : déficit ; positif : excédent.</dd>
+  <dt>Jaugeage</dt><dd>Mesure de la hauteur de carburant dans une cuve, convertie en litres par le barème.</dd>
+  <dt>Barème</dt><dd>Table de correspondance hauteur (cm) → volume (L) propre à chaque cuve.</dd>
+  <dt>Stock théorique</dt><dd>Dernier jaugeage + livraisons − litres débités + retours en cuve.</dd>
+  <dt>Synchronisation</dt><dd>Envoi des opérations de la station au serveur central, et réception des comptes, prix et taux décidés au central.</dd>
+</dl>
+
+<p class="credit">Petra — développé par BELEJ-CONSULTING</p>
+
+</main>
+</body>
+</html>

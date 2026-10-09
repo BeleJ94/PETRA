@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Petra — développé par BELEJ-CONSULTING. Logo : station-service sur tuile blanche. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<rect width="64" height="64" rx="14" fill="#fff"/>
+<g transform="translate(5.12 5.12) scale(.84)"><rect x="6" y="10" width="52" height="8" rx="3" fill="#E0662B"/><rect x="6" y="18" width="52" height="6" fill="#1F4E79"/><rect x="10" y="24" width="4" height="30" fill="#163A5C"/><rect x="50" y="24" width="4" height="30" fill="#163A5C"/><rect x="22" y="32" width="12" height="22" rx="2" fill="#1F4E79"/><rect x="24" y="35" width="8" height="6" rx="1" fill="#5FD39A"/><path d="M34 38c7 0 8 6 8 11v3" stroke="#163A5C" stroke-width="2.500" stroke-linecap="round"/><rect x="4" y="54" width="56" height="4" rx="2" fill="#163A5C"/></g>
+</svg>

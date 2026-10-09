@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/php/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         failOnWarning="true"
+         failOnRisky="true"
+         beStrictAboutOutputDuringTests="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/php/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/php/Integration</directory>
+        </testsuite>
+        <testsuite name="Functional">
+            <directory>tests/php/Functional</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <!-- Base dédiée aux tests : elle est entièrement recréée à chaque exécution. -->
+        <env name="DB_NAME" value="petra_test" force="true"/>
+        <env name="APP_ENV" value="testing" force="true"/>
+        <env name="APP_DEBUG" value="false" force="true"/>
+        <env name="APP_BASE_PATH" value="" force="true"/>
+        <env name="APP_MODE" value="station" force="true"/>
+    </php>
+</phpunit>

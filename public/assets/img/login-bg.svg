@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Petra — développé par BELEJ-CONSULTING. Fond de l'écran de connexion : une station-service au crépuscule
+     (auvent, pompes, camion-citerne, cuve jaugée) et, en filigrane, la courbe du contrôle : reçu, stocké, vendu, encaissé. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1E33"/>
+      <stop offset=".55" stop-color="#16395C"/>
+      <stop offset=".8" stop-color="#2A5F8F"/>
+      <stop offset="1" stop-color="#C56A3A"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F2740"/>
+      <stop offset="1" stop-color="#081726"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9B8" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#FFE9B8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fuel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0A04B"/>
+      <stop offset="1" stop-color="#C8642A"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFD9A0" stop-opacity=".9"/>
+      <stop offset=".35" stop-color="#F4A45C" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#F4A45C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1130" cy="640" r="330" fill="url(#sun)"/>
+
+  <!-- Étoiles -->
+  <g fill="#fff">
+    <circle cx="120" cy="90" r="1.6" opacity=".7"/><circle cx="310" cy="150" r="1.2" opacity=".5"/><circle cx="520" cy="70" r="1.5" opacity=".6"/>
+    <circle cx="760" cy="130" r="1.1" opacity=".5"/><circle cx="980" cy="60" r="1.6" opacity=".6"/><circle cx="1210" cy="140" r="1.2" opacity=".45"/>
+    <circle cx="1420" cy="80" r="1.5" opacity=".6"/><circle cx="1520" cy="210" r="1.1" opacity=".4"/><circle cx="660" cy="230" r="1" opacity=".35"/>
+    <circle cx="220" cy="260" r="1.1" opacity=".35"/><circle cx="1320" cy="250" r="1" opacity=".35"/><circle cx="880" cy="200" r="1.2" opacity=".4"/>
+  </g>
+
+  <!-- Filigrane : quadrillage et courbe de contrôle -->
+  <g stroke="#fff" stroke-opacity=".05" stroke-width="1">
+    <path d="M0 220H1600M0 320H1600M0 420H1600M0 520H1600"/>
+    <path d="M200 120V640M400 120V640M600 120V640M800 120V640M1000 120V640M1200 120V640M1400 120V640"/>
+  </g>
+  <g fill="#fff" fill-opacity=".05">
+    <rect x="1010" y="430" width="34" height="190"/><rect x="1064" y="380" width="34" height="240"/><rect x="1118" y="410" width="34" height="210"/>
+    <rect x="1172" y="340" width="34" height="280"/><rect x="1226" y="370" width="34" height="250"/><rect x="1280" y="300" width="34" height="320"/>
+    <rect x="1334" y="330" width="34" height="290"/><rect x="1388" y="270" width="34" height="350"/>
+  </g>
+  <path d="M60 470C200 440 260 500 400 430S620 360 760 400 980 300 1120 320 1340 220 1560 190" fill="none" stroke="#7FC4FF" stroke-opacity=".28" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#7FC4FF" fill-opacity=".55">
+    <circle cx="400" cy="430" r="5"/><circle cx="760" cy="400" r="5"/><circle cx="1120" cy="320" r="5"/><circle cx="1560" cy="190" r="5"/>
+  </g>
+
+  <!-- Horizon : collines et ville -->
+  <path d="M0 640C180 590 330 620 520 600S860 560 1040 596s360-30 560 10V900H0Z" fill="#102C47"/>
+  <g fill="#0D2238">
+    <rect x="1290" y="560" width="26" height="70"/><rect x="1322" y="540" width="20" height="90"/><rect x="1348" y="572" width="34" height="58"/>
+    <rect x="1390" y="548" width="22" height="82"/><rect x="1418" y="566" width="30" height="64"/><rect x="1456" y="530" width="18" height="100"/>
+    <rect x="1480" y="576" width="40" height="54"/><rect x="1528" y="556" width="24" height="74"/>
+  </g>
+  <g fill="#FFD9A0" fill-opacity=".6">
+    <rect x="1327" y="552" width="4" height="5"/><rect x="1396" y="560" width="4" height="5"/><rect x="1461" y="544" width="4" height="5"/><rect x="1461" y="566" width="4" height="5"/>
+    <rect x="1534" y="570" width="4" height="5"/><rect x="1298" y="574" width="4" height="5"/>
+  </g>
+
+  <!-- Cuve de stockage et son niveau -->
+  <g>
+    <rect x="96" y="486" width="170" height="200" rx="14" fill="#0E2640" stroke="#3C6E9C" stroke-width="2"/>
+    <rect x="104" y="566" width="154" height="112" rx="8" fill="url(#fuel)" opacity=".85"/>
+    <path d="M104 574q19-10 38 0t38 0 38 0 40 0" fill="none" stroke="#FFD9A0" stroke-opacity=".6" stroke-width="2"/>
+    <ellipse cx="181" cy="486" rx="85" ry="13" fill="#163A5C" stroke="#3C6E9C" stroke-width="2"/>
+    <rect x="278" y="500" width="6" height="180" rx="3" fill="#3C6E9C"/>
+    <g stroke="#9CC4E8" stroke-width="2"><path d="M284 520h12M284 560h8M284 600h12M284 640h8M284 676h12"/></g>
+    <path d="M296 574l14-7v14z" fill="#F0A04B"/>
+    <rect x="86" y="686" width="190" height="10" rx="3" fill="#0A1B2E"/>
+  </g>
+
+  <!-- Sol -->
+  <rect y="690" width="1600" height="210" fill="url(#ground)"/>
+  <path d="M0 692H1600" stroke="#3C6E9C" stroke-opacity=".45" stroke-width="2"/>
+  <g stroke="#F0A04B" stroke-opacity=".28" stroke-width="5" stroke-linecap="round">
+    <path d="M40 800h90M230 800h90M420 800h90M610 800h90M800 800h90M990 800h90M1180 800h90M1370 800h90"/>
+  </g>
+
+  <!-- Auvent éclairé -->
+  <g>
+    <path d="M470 372 430 690H640L600 372Z" fill="url(#beam)"/>
+    <path d="M760 372 720 690H930L890 372Z" fill="url(#beam)"/>
+    <rect x="455" y="372" width="18" height="320" fill="#0C2036"/>
+    <rect x="905" y="372" width="18" height="320" fill="#0C2036"/>
+    <rect x="380" y="322" width="620" height="52" rx="6" fill="#12314D" stroke="#3C6E9C" stroke-width="2"/>
+    <rect x="380" y="322" width="620" height="12" rx="6" fill="#E0662B"/>
+    <rect x="500" y="368" width="70" height="7" rx="3" fill="#FFE9B8"/>
+    <rect x="790" y="368" width="70" height="7" rx="3" fill="#FFE9B8"/>
+    <text x="690" y="361" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="8" fill="#fff" fill-opacity=".92">PETRA</text>
+  </g>
+
+  <!-- Pompes -->
+  <g id="pump">
+    <rect x="505" y="560" width="62" height="130" rx="8" fill="#17406A" stroke="#5A93C7" stroke-width="2"/>
+    <rect x="513" y="572" width="46" height="34" rx="4" fill="#0A1B2E"/>
+    <path d="M518 596h8v-12h-8zM530 596h8v-18h-8zM542 596h8v-8h-8z" fill="#5FD39A"/>
+    <rect x="513" y="614" width="46" height="6" rx="3" fill="#E0662B"/>
+    <rect x="513" y="628" width="20" height="26" rx="3" fill="#0F2B47"/>
+    <path d="M567 600c26 0 30 22 30 44v24" fill="none" stroke="#0A1B2E" stroke-width="6" stroke-linecap="round"/>
+    <path d="M590 664h14l4 14h-12z" fill="#E0662B"/>
+    <rect x="497" y="688" width="78" height="8" rx="3" fill="#0A1B2E"/>
+  </g>
+  <use href="#pump" x="290"/>
+
+  <!-- Camion-citerne en livraison -->
+  <g>
+    <rect x="1085" y="596" width="270" height="74" rx="37" fill="#D9E3EE"/>
+    <rect x="1085" y="596" width="270" height="20" rx="10" fill="#fff" fill-opacity=".55"/>
+    <rect x="1085" y="640" width="270" height="6" fill="#E0662B"/>
+    <path d="M1150 596v74M1220 596v74M1290 596v74" stroke="#9FB3C8" stroke-width="2"/>
+    <path d="M1362 612h58l28 30v32h-86z" fill="#17406A" stroke="#5A93C7" stroke-width="2"/>
+    <path d="M1374 620h40l20 22h-60z" fill="#8FC4EE" fill-opacity=".75"/>
+    <rect x="1075" y="670" width="378" height="10" rx="4" fill="#0A1B2E"/>
+    <g fill="#0A1B2E" stroke="#5A93C7" stroke-width="3"><circle cx="1130" cy="684" r="17"/><circle cx="1180" cy="684" r="17"/><circle cx="1310" cy="684" r="17"/><circle cx="1418" cy="684" r="17"/></g>
+    <g fill="#5A93C7"><circle cx="1130" cy="684" r="5"/><circle cx="1180" cy="684" r="5"/><circle cx="1310" cy="684" r="5"/><circle cx="1418" cy="684" r="5"/></g>
+    <path d="M1085 660c-40 0-60 10-90 34" fill="none" stroke="#0A1B2E" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1448 664h10" stroke="#FFE9B8" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Reflets au sol -->
+  <g fill="#FFE9B8" fill-opacity=".06">
+    <ellipse cx="535" cy="716" rx="130" ry="12"/><ellipse cx="825" cy="716" rx="130" ry="12"/>
+  </g>
+</svg>

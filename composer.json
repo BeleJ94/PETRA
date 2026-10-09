@@ -1,0 +1,55 @@
+{
+    "name": "belej-consulting/petra",
+    "description": "Petra - gestion et contrôle de stations-service (multi-stations), développé par BELEJ-CONSULTING",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "BELEJ-CONSULTING"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-mbstring": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Petra\\": "app/"
+        },
+        "files": [
+            "app/Core/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/php/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit",
+            "npm test --silent"
+        ],
+        "test:php": "phpunit",
+        "test:js": "npm test --silent",
+        "migrate": "php bin/migrate.php",
+        "seed": "php bin/seed.php",
+        "sync": "php bin/sync.php",
+        "backup": "php bin/backup.php",
+        "restore": "php bin/restore.php",
+        "checks": "php bin/daily-checks.php",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S 127.0.0.1:8081 -t public bin/dev-router.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

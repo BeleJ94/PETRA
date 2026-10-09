@@ -1,0 +1,12 @@
+# Petra — développé par BELEJ-CONSULTING.
+# Si le vhost pointe sur la racine du projet (au lieu de /public), on redirige tout vers /public
+# et on bloque l'accès aux dossiers sensibles (app, config, vendor, .env…).
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|bin|config|database|docs|lang|storage|tests|vendor|node_modules)(/|$) - [F,L]
+    RewriteRule ^\. - [F,L]
+    RewriteRule ^(composer\.(json|lock)|package\.json|phpunit\.xml|CLAUDE\.md|README\.md)$ - [F,L]
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^(?!public/)(.*)$ public/$1 [L]
+</IfModule>

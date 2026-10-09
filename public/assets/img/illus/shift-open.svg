@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Petra — développé par BELEJ-CONSULTING -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" fill="none">
+<ellipse cx="120" cy="138" rx="90" ry="8" fill="#E8EEF4"/><g transform="translate(84 40)"><rect width="52" height="92" rx="8" fill="#1F4E79"/><rect x="8" y="10" width="36" height="26" rx="3" fill="#0F2B47"/><path d="M13 31h5v-8h-5zM22 31h5V17h-5zM31 31h5v-6h-5z" fill="#5FD39A"/><rect x="8" y="42" width="36" height="5" rx="2.5" fill="#E0662B"/><rect x="8" y="54" width="16" height="20" rx="2" fill="#000" fill-opacity=".18"/><path d="M52 32c20 0 22 16 22 32v14" stroke="#163A5C" stroke-width="5" stroke-linecap="round"/><path d="M68 76h11l3 11h-10z" fill="#E0662B"/><rect x="-7" y="90" width="66" height="6" rx="3" fill="#163A5C"/></g><g transform="translate(184 52)"><circle r="22" fill="#1F4E79"/><path d="M-6-10v20l16-10z" fill="#fff"/></g><path d="M36 58h22M28 74h26M40 90h16" stroke="#C4CAD2" stroke-width="4" stroke-linecap="round"/>
+</svg>

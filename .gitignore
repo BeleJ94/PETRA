@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+/.env
+/storage/logs/*
+!/storage/logs/.gitkeep
+/.phpunit.cache/
+/storage/backups/*
+!/storage/backups/.gitkeep
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+/.claude/
